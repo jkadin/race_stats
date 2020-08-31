@@ -78,4 +78,7 @@ async def main():
     print("Data written to : %s" % csv_file)
 
 
-asyncio.run(main())
+loop = asyncio.new_event_loop()
+asyncio.set_event_loop(loop)
+fut = loop.create_task(main())
+loop.run_until_complete(fut)
